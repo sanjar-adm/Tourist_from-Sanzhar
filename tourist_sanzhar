@@ -1,0 +1,87 @@
+create  table inner_flights(
+    id serial primary key ,
+    from_region varchar (50),
+    to_destination varchar (50),
+    company varchar (50),
+    quantity int
+);
+
+create table outter_flights (
+    id serial primary key ,
+    from_country varchar (50),
+    to_country varchar (50),
+    flight_type varchar (50),
+    company varchar(50),
+    neighbors int
+);
+
+insert into inner_flights(
+    from_region, 
+     to_destination,
+     company,
+     quantity
+) values  
+    ('Bishkek','New York','Manas Air', 199),
+    ('Bishkek','Copenhagen','Manas Air',201),
+    ('Bishkek','Washington','FlyDubai ',244),
+    ('Bishkek','New Delhi','Fly Emirates ',133),
+    ('Bishkek','Barcelona','Turkish Airlines',299),
+    ('Bishkek','Madrid','Pegasus',300),
+    ('Bishkek','Manchester','Turkish Airlines',400), 
+    ('Bishkek','London','Lufthansa',298),
+    ('Bishkek','Bali','British Airways',421),
+    ('Bishkek','Bangkok','Eurowings',312),
+    ('Bishkek','Chicago','Iberia',498),
+    ('Bishkek','Paris','Air France',267),
+    ('Bishkek','Astana','Air France',268),
+    ('Bishkek','See','Air France',227),
+    ('Bishkek','Pass','Air France',237)
+    
+select * from inner_flights;
+
+select * from inner_flights where id >10; 
+
+select * from inner_flights where to_destination IN ('Bishkek', 'Osh'); 
+
+select * from inner_flights where quantity > 150; 
+
+
+insert into  outter_flights(
+    from_country,
+    to_country,
+    flight_type,
+    company,
+    neighbors
+) values 
+    ('New York', 'Bishkek', 'Cargo','Manas Air', 2),
+    ('Copenhagen','Bishkek','Passenger','Manas Air',1),
+    ('Washington','Bishkek','Passenger','FlyDubai',4),
+    ('New Delhi','Bishkek','Passenger','Fly Emirates',1),
+    ('Barcelona','Bishkek','Cargo','Turkish Airlines',2),
+    ('Madrid','Bishkek','Passenger','Pegasus',3),
+    ('Manchester','Bishkek','Cargo','Turkish Airlines',3), 
+    ('London','Bishkek','Passenger','Lufthansa',4),
+    ('Bali','Bishkek','Passenger','British Airways',6),
+    ('Bangkok','Bishkek','Cargo','Eurowings',7),
+    ('Chicago','Bishkek','Passenger','Iberia',2),
+    ('Paris', 'Bishkek','Passenger','Air France',1),
+    ('Astana','Bishkek','Cargo','Air France',3),
+    ('See','Bishkek','Passenger','Air France',2),
+    ('Pass','Bishkek','Cargo','Air France',3)
+       
+select company from outter_flights where flight_type = 'Passaenger'; 
+
+select * from outter_flights where  id < 7; 
+
+select company from outter_flights where flight_type = 'Cargo'; 
+
+select * from outter_flights where neighbors > '3'; 
+
+select * from outter_flights where neighbors > '3' and flight_type = 'Passenger'; 
+
+select company, to_country from outter_flights; 
+
+
+
+
+
