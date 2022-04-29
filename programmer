@@ -1,0 +1,40 @@
+create table students(
+    id serial primary key,
+    all_name varchar (50),
+    age integer,
+    fp_language varchar (50),
+    sp_language varchar (50)
+);
+insert into students(
+    all_name,
+    age,
+    fp_language,
+    sp_language
+) values 
+    ('Bakyt',23,'Python','C++'),
+    ('Aygul',46,'Python','Java'),
+    ('Jika',13,'C','Ruby_On_Rails'),
+    ('Ermek',16,'Java','C'),
+    ('Artem',55,'C#','Java'),
+    ('Roma',31,'Pascal','C'),
+    ('Beka',25,'C#','JavaScript')
+
+select * from students;
+
+select all_name, fp_language from students;
+
+select * from students where age < 30; 
+
+select * from students where  fp_language in ('Python','C#')
+or sp_language in ('Python','C#');
+
+select * from students where  fp_language = 'Python' and sp_language ='C#'
+or fp_language = 'C#' and sp_language ='Java';
+
+delete from students whehe id = '1' and id = '3' and id = '5' and id = '7';
+
+select * from students where fp_language = 'Java';
+
+delete table students;
+
+delete database programmers;
